@@ -16,15 +16,32 @@ repositories {
     mavenCentral()
 }
 
+extra["kotestVersion"] = "5.5.5"
+extra["arrowVersion"] = "1.1.2"
+extra["mockkVersion"] = "1.13.4"
+
 dependencies {
+    //Spring
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    //Kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    implementation("io.arrow-kt:arrow-core:${property("arrowVersion")}")
+
+    //Database
     runtimeOnly("com.h2database:h2")
+
+    //Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.kotest:kotest-runner-junit5:${property("kotestVersion")}")
+    testImplementation("io.kotest:kotest-assertions-core:${property("kotestVersion")}")
+    testImplementation("io.kotest:kotest-property:${property("kotestVersion")}")
+    testImplementation("io.mockk:mockk:${property("mockkVersion")}")
 }
 
 tasks.withType<KotlinCompile> {
