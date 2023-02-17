@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class AppointmentsKotlinApplication
+class AppointmentsApplication
 
 fun main(args: Array<String>) {
-    runApplication<AppointmentsKotlinApplication>(*args)
+    runApplication<AppointmentsApplication>(*args)
 }
